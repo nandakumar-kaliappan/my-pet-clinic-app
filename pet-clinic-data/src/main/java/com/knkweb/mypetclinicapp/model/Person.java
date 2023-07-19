@@ -1,4 +1,4 @@
-package com.knkweb.mypetclinicapp.data;
+package com.knkweb.mypetclinicapp.model;
 
 public class Person {
     private String firstName;
