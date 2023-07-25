@@ -15,6 +15,7 @@
     </tr>
     </thead>
     <tbody>
+    <!--/*@thymesVar id="owners" type="com.knkweb.mypetclinicapp.model.Owner"*/-->
     <tr th:each ="owner : ${owners}">
         <td th:text = "${owner.id}" >1</td>
         <td th:text="${owner.firstName}">toe</td>
