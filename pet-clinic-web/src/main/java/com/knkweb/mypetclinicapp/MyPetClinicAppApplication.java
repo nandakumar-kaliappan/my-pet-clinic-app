@@ -8,6 +8,7 @@ public class MyPetClinicAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MyPetClinicAppApplication.class, args);
+		System.out.println("READY TO RUN");
 	}
 
 }
