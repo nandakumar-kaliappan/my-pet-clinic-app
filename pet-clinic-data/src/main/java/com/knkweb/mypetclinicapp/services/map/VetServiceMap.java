@@ -2,9 +2,10 @@ package com.knkweb.mypetclinicapp.services.map;
 
 import com.knkweb.mypetclinicapp.model.Vet;
 import com.knkweb.mypetclinicapp.services.CrudService;
-
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
 
     @Override
