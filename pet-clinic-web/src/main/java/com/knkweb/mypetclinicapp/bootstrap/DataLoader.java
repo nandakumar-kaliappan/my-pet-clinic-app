@@ -1,35 +1,72 @@
 package com.knkweb.mypetclinicapp.bootstrap;
 
 import com.knkweb.mypetclinicapp.model.Owner;
+import com.knkweb.mypetclinicapp.model.Pet;
+import com.knkweb.mypetclinicapp.model.PetType;
 import com.knkweb.mypetclinicapp.model.Vet;
 import com.knkweb.mypetclinicapp.services.OwnerService;
+import com.knkweb.mypetclinicapp.services.PetTypeService;
 import com.knkweb.mypetclinicapp.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
+
         Owner owner1 = new Owner();
 //        owner1.setId(1L);
         owner1.setFirstName("Ram");
         owner1.setLastName("kumar");
+//        owner1.setAddress("Tup");
+        owner1.setAddress("Tup");
+        owner1.setCity("Tiruppur");
+        owner1.setTelephone("1237");
         ownerService.save(owner1);
+
+        Pet mikesPet = new Pet();
+        mikesPet.setName("Rosco");
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner1);
+        owner1.getPets().add(mikesPet);
+
         Owner owner2 = new Owner();
 //        owner2.setId(2L);
         owner2.setFirstName("Arav");
         owner2.setLastName("sha");
+        owner1.setAddress("Cbe");
+        owner1.setCity("Coimbatore");
+        owner1.setTelephone("2459");
         ownerService.save(owner2);
 
+        Pet fionasCat = new Pet();
+        fionasCat.setName("kitty");
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setPetType(savedCatPetType);
+        fionasCat.setOwner(owner2);
+        owner2.getPets().add(fionasCat);
         System.out.println("Owners loaded");
 
         Vet vet1 = new Vet();
