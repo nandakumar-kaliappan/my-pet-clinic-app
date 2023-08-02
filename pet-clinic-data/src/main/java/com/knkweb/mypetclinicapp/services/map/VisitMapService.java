@@ -1,11 +1,11 @@
 package com.knkweb.mypetclinicapp.services.map;
 
 import com.knkweb.mypetclinicapp.model.Visit;
-import com.knkweb.mypetclinicapp.services.VisitSerive;
+import com.knkweb.mypetclinicapp.services.VisitService;
 
 import java.util.Set;
 
-public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitSerive {
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Visit findById(Long aLong) {
         return super.findById(aLong);
